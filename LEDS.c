@@ -50,7 +50,7 @@ void *mirror(void* arg)
 			
 		decz = atoi(inbuffer);
 		
-		if(decz >= 0 && decz <= 15)
+		if(decz >= 0 && decz <= 15){
 			if(decz % 2 == 1){
 				digitalWrite(LED1, 1);
 				decz = (decz-1)/2;
