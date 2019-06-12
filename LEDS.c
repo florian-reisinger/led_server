@@ -33,14 +33,14 @@ void *mirror(void* arg)
 	char inbuffer[BUFSIZE];
 	int decz = 0;
 	
-	write(clientfd, "Welcome to LED Server 2!\n\r", 27);
-	write(clientfd, "\nUm eine dez. Zahl in eine in bin. auf den LEDs anzeigen zu lassen gib eine Zahl zwischen 0 und 15 ein.\n\r", 107);
-	write(clientfd, "Um das Programm zu beenden drücke 'q'\n\n\r", 43);
+	write(clientfd, "Willkommen zum LED Server.\n\r", 27);
+	write(clientfd, "\nGeben Sie eine Zahl zwischen 0 und 15 ein. Die LEDs geben die eingegeben Zahl im Binären Format wieder.\n\r", 107);
+	write(clientfd, "Zum beenden q drücken.\n\n\r", 43);
 	while(1){
 		read(clientfd, inbuffer, sizeof(inbuffer));  
 		
 		if(inbuffer[0] == 'q'){
-			write(clientfd, "Bye Bye\n\r", 12);
+			write(clientfd, "Server wird heruntergefahren...\n\r", 12);
 			digitalWrite(LED1, 0);
 			digitalWrite(LED2, 0);
 			digitalWrite(LED3, 0);
@@ -173,7 +173,7 @@ int main()
 	
 
 	while(1){
-		printf("Server wartet......\n");
+		printf("Server wartet auf Eingabe\n");
 
 		rec_socket = accept(server_socket, (struct sockaddr *)&clientinfo, &len);
 		printf("Verbindung von %s:%d\n", inet_ntoa(clientinfo.sin_addr), ntohs(clientinfo.sin_port));
